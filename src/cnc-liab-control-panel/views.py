@@ -26,8 +26,12 @@ from django.contrib import messages
 from django.shortcuts import HttpResponseRedirect
 
 # Every app will need to import at least the CNCBaseFormView
+#from pan_cnc.views import CNCBaseFormView, ProvisionSnippetView, CNCBaseAuth
+# Matching PanHandler import
 from pan_cnc.views import CNCBaseFormView, ProvisionSnippetView, CNCBaseAuth
 from django.views.generic.base import RedirectView
+
+
 
 
 # All class attributes can be defined here or in the .pan-cnc.yaml
@@ -66,7 +70,7 @@ class ExampleAppView(CNCBaseFormView):
 class CNCIDKView(CNCBaseFormView):
 
     snippet = "demo_office365_sharepoint_ww"
-    app_dir = "cnc-app-name"
+    app_dir = "/Users/packetalien/Development/cnc-control-panel/src/cnc-liab-control-panel/snippets/pandemoinabox/.pan-cnc"
 
 
     def get_snippet(self):

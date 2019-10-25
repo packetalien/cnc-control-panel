@@ -6,7 +6,7 @@
 name: Lab in a Box Control Panel
 
 repositories:
-  - name: panDemoinaBox
+  - name: Default Skillets
     url: https://github.com/packetalien/panDemoinaBox.git
     branch: master
     destination_directory: pandemoinabox
@@ -30,7 +30,7 @@ views:
       description: This is the Lab in a Box Control Panel
       documentation_link: https://github.com/scotchoaf/cnc-skeleton/blob/master/src/cnc-app-name/.pan-cnc.yaml
       next: localdemos 
-
+  
   - name: loadURLMain
     class: HostedLabView # this is a view defined in cnc-app-name/views.py which bases CNCBaseFormView
     menu: Main Menu
@@ -53,13 +53,15 @@ views:
       url: https://loop.paloaltonetworks.com/docs/DOC-36686
 
   - name: localdemos
-    class: CNCBaseFormView # this is a view defined in cnc-app-name/views.py which bases CNCBaseFormView
+    class: ExampleAppPasswordView # this is a view defined in cnc-app-name/views.py which bases CNCBaseFormView
     menu: Local Demos
     menu_option: Load Sharepoint Decryption Demo
     attributes:
       header: Load Sharpoint Decryption Demo      # Header to render in the HTML template
       title: Select Configuration Option  # title to render in the HTML template
       snippet: demo_office365_sharepoint_ww  # this is the name of a skillet to load. CNCBaseFormView will use this to render a form
+      fields_to_render:   # logic in CNCBaseFormView will only show variables defined in the snippet if they match this
+        - var_name        # list. In this case, we only want to show the user these two fields out of the three defined
 
   - name: loadURLMain
     class: HostedLabView # this is a view defined in cnc-app-name/views.py which bases CNCBaseFormView
