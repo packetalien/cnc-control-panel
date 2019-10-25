@@ -1,0 +1,133 @@
+# Each CNC application is configured via the .pan-cnc.yaml file. This file will load all the views defined in views.py
+# and configure the URL routing for each. To completely build a CNC app, you must configure this file along with
+# your code in views.py
+
+# name is used to identify this application inside the CNC framework
+name: Lab in a Box Control Panel
+
+repositories:
+  - name: panDemoinaBox
+    url: https://github.com/packetalien/panDemoinaBox.git
+    branch: master
+    destination_directory: pandemoinabox
+
+# views is a list of dicts that will configure URL routing within the application. Each view may also optionally
+# have a menu entry configured using the 'menu' and 'menu_option' attributes
+views:
+
+  # Each app should contain the '' default route. name here corresponds to the url path that will route the request
+  # to the class based view defined in the 'class' attribute. The class can be any Django 2.0+ class based view
+  # but for convienence you should base one of the provided CNC base classes like CNCView, CNCBaseFormView, or
+  # ProvisionSnippetView
+  - name: ''
+    class: CNCView # this corresponds to a CNC base class defined in pan_cnc/views.py or one of your own in views.py
+    menu: Main Menu # this top level menu entry
+    menu_option: Welcome # the clickable item in the top level menu entry
+    attributes: # attributes defined here will set class level attributes in the class defined above.
+      template_name: pan_cnc/welcome.html  # this sets the template_name class level attribute
+    context:  # context will set these attributes in the context dict that is sent to the HTML template for rendering
+      title: Lab in a Box   # the default base.html template uses these to set the title, header, description, etc
+      description: This is the Lab in a Box Control Panel
+      documentation_link: https://github.com/scotchoaf/cnc-skeleton/blob/master/src/cnc-app-name/.pan-cnc.yaml
+      next: localdemos 
+
+  - name: loadURLMain
+    class: HostedLabView # this is a view defined in cnc-app-name/views.py which bases CNCBaseFormView
+    menu: Main Menu
+    menu_option: Lab in a Box Main Page
+    attributes:
+      url: https://loop.paloaltonetworks.com/community/sales/world-wide-se-team/se-new-hire/labs
+
+  - name: loadURLInstallersW
+    class: HostedLabView # this is a view defined in cnc-app-name/views.py which bases CNCBaseFormView
+    menu: Main Menu
+    menu_option: Lab in a Box Windows Install Guide
+    attributes:
+      url: https://loop.paloaltonetworks.com/docs/DOC-36656
+
+  - name: loadURLInstallersM
+    class: HostedLabView # this is a view defined in cnc-app-name/views.py which bases CNCBaseFormView
+    menu: Main Menu
+    menu_option: Lab in a Box MacOS Install Guide
+    attributes:
+      url: https://loop.paloaltonetworks.com/docs/DOC-36686
+
+  - name: localdemos
+    class: CNCBaseFormView # this is a view defined in cnc-app-name/views.py which bases CNCBaseFormView
+    menu: Local Demos
+    menu_option: Load Sharepoint Decryption Demo
+    attributes:
+      header: Load Sharpoint Decryption Demo      # Header to render in the HTML template
+      title: Select Configuration Option  # title to render in the HTML template
+      snippet: demo_office365_sharepoint_ww  # this is the name of a skillet to load. CNCBaseFormView will use this to render a form
+
+  - name: loadURLMain
+    class: HostedLabView # this is a view defined in cnc-app-name/views.py which bases CNCBaseFormView
+    menu: Docs and Guides
+    menu_option: Load SE Bootcamp Lab Guide
+    attributes:
+      url: https://loop.paloaltonetworks.com/community/sales/world-wide-se-team/se-new-hire/labs
+
+  - name: loadURLDemos
+    class: HostedLabView # this is a view defined in cnc-app-name/views.py which bases CNCBaseFormView
+    menu: Docs and Guides
+    menu_option: Load Lab Demos Page
+    attributes:
+      url: https://loop.paloaltonetworks.com/community/sales/world-wide-se-team/se-new-hire/labs/lab-in-a-box-demos
+
+  - name: loadURLSolutions
+    class: HostedLabView # this is a view defined in cnc-app-name/views.py which bases CNCBaseFormView
+    menu: Solutions and Help
+    menu_option: Main Solutions Page
+    attributes:
+      url: https://loop.paloaltonetworks.com/community/sales/world-wide-se-team/se-new-hire/labs/liab-known-issues/pages/overview
+      
+  - name: loadURLInstallersNoOptions
+    class: HostedLabView # this is a view defined in cnc-app-name/views.py which bases CNCBaseFormView
+    menu: Main Menu
+    menu_option: Windows Lab in a Box No Install Options in Software Center
+    attributes:
+      url: https://loop.paloaltonetworks.com/docs/DOC-40084
+
+  - name: loadHostedDemos
+    class: HostedLabView # this is a view defined in cnc-app-name/views.py which bases CNCBaseFormView
+    menu: Hosted Demos
+    menu_option: Load Hosted Panorama US
+    attributes:
+      url: https://us1rama.demo.paloaltonetworks.com/
+
+  - name: LoadHostedDemos2
+    class: HostedLabView # this is a view defined in cnc-app-name/views.py which bases CNCBaseFormView
+    menu: Hosted Demos
+    menu_option: Load Hosted Panorama UK
+    attributes:
+      url: https://uk1rama.demo.paloaltonetworks.com/
+
+  - name: LoadHostedDemosDashLanding
+    class: HostedLabView # this is a view defined in cnc-app-name/views.py which bases CNCBaseFormView
+    menu: Hosted Demos
+    menu_option: DASH Landing Page
+    attributes:
+      url: https://loop.paloaltonetworks.com/docs/DOC-40272
+
+  - name: LoadHostedDemosListPage
+    class: HostedLabView # this is a view defined in cnc-app-name/views.py which bases CNCBaseFormView
+    menu: Hosted Demos
+    menu_option: Demos List Page
+    attributes:
+      url: https://loop.paloaltonetworks.com/docs/DOC-8751
+
+  - name: LoadHostedDemosClientlessVPN
+    class: HostedLabView # this is a view defined in cnc-app-name/views.py which bases CNCBaseFormView
+    menu: Hosted Demos
+    menu_option: GlobalProtect Clientless VPN
+    attributes:
+      url: https://clientless.demo.paloaltonetworks.com/global-protect/portal/portal.esp
+
+  - name: LoadHostedDemosRedLockLanding
+    class: HostedLabView # this is a view defined in cnc-app-name/views.py which bases CNCBaseFormView
+    menu: Hosted Demos
+    menu_option: Redlock Landing Page
+    attributes:
+      url: https://loop.paloaltonetworks.com/community/sales/world-wide-se-team/jit-training/redlock/activity
+  
