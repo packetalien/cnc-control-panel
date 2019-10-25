@@ -3,7 +3,7 @@
 # your code in views.py
 
 # name is used to identify this application inside the CNC framework
-name: Lab in a Box Control Panel
+name: cnc-liab-control-panel
 
 repositories:
   - name: Default Skillets
@@ -52,44 +52,64 @@ views:
     attributes:
       url: https://loop.paloaltonetworks.com/docs/DOC-36686
 
-  - name: localdemos
-    class: ExampleAppPasswordView # this is a view defined in cnc-app-name/views.py which bases CNCBaseFormView
+  - name: localdemos01
+    class: ProvisionSnippetView # this is a view defined in cnc-app-name/views.py which bases CNCBaseFormView
     menu: Local Demos
     menu_option: Load Sharepoint Decryption Demo
     attributes:
-      header: Load Sharpoint Decryption Demo      # Header to render in the HTML template
+      header: Load Sharepoint Decryption Demo      # Header to render in the HTML template
       title: Select Configuration Option  # title to render in the HTML template
       snippet: demo_office365_sharepoint_ww  # this is the name of a skillet to load. CNCBaseFormView will use this to render a form
-      fields_to_render:   # logic in CNCBaseFormView will only show variables defined in the snippet if they match this
-        - var_name        # list. In this case, we only want to show the user these two fields out of the three defined
 
-  - name: loadURLMain
-    class: HostedLabView # this is a view defined in cnc-app-name/views.py which bases CNCBaseFormView
-    menu: Docs and Guides
-    menu_option: Load SE Bootcamp Lab Guide
+  - name: localdemos02
+    class: ProvisionSnippetView # this is a view defined in cnc-app-name/views.py which bases CNCBaseFormView
+    menu: Local Demos
+    menu_option: Load SOC Excellence Demo
     attributes:
-      url: https://loop.paloaltonetworks.com/community/sales/world-wide-se-team/se-new-hire/labs
+      header: Load SOC Excellence Demo      # Header to render in the HTML template
+      title: Select Configuration Option  # title to render in the HTML template
+      snippet: diab-skillet-simple-soc-conviction-edl-demo  # this is the name of a skillet to load. CNCBaseFormView will use this to render a form
 
-  - name: loadURLDemos
-    class: HostedLabView # this is a view defined in cnc-app-name/views.py which bases CNCBaseFormView
-    menu: Docs and Guides
-    menu_option: Load Lab Demos Page
+  - name: localdemos03
+    class: ProvisionSnippetView # this is a view defined in cnc-app-name/views.py which bases CNCBaseFormView
+    menu: Local Demos
+    menu_option: Load OSINT DShield and Conviction
     attributes:
-      url: https://loop.paloaltonetworks.com/community/sales/world-wide-se-team/se-new-hire/labs/lab-in-a-box-demos
+      header: Load OSINT DShield Internet Storm Center Demo      # Header to render in the HTML template
+      title: Select Configuration Option  # title to render in the HTML template
+      snippet: demo_dshield_t20_edl  # this is the name of a skillet to load. CNCBaseFormView will use this to render a form
 
-  - name: loadURLSolutions
-    class: HostedLabView # this is a view defined in cnc-app-name/views.py which bases CNCBaseFormView
-    menu: Solutions and Help
-    menu_option: Main Solutions Page
+  - name: localdemos04
+    class: ProvisionSnippetView # this is a view defined in cnc-app-name/views.py which bases CNCBaseFormView
+    menu: Local Demos
+    menu_option: Load SSH Traffic over Non-Standard Ports Demo
     attributes:
-      url: https://loop.paloaltonetworks.com/community/sales/world-wide-se-team/se-new-hire/labs/liab-known-issues/pages/overview
-      
-  - name: loadURLInstallersNoOptions
-    class: HostedLabView # this is a view defined in cnc-app-name/views.py which bases CNCBaseFormView
-    menu: Main Menu
-    menu_option: Windows Lab in a Box No Install Options in Software Center
+      header: Load SSH Traffic over Non-Standard Ports Demo      # Header to render in the HTML template
+      title: Select Configuration Option  # title to render in the HTML template
+      snippet: demo_non_standard_ports  # this is the name of a skillet to load. CNCBaseFormView will use this to render a form
+
+  - name: localdemos05
+    class: ProvisionSnippetView # this is a view defined in cnc-app-name/views.py which bases CNCBaseFormView
+    menu: Local Demos
+    menu_option: Load OwnCloud App-ID Conversation Demo
     attributes:
-      url: https://loop.paloaltonetworks.com/docs/DOC-40084
+      header: Load OwnCloud App-ID Conversation Demo      # Header to render in the HTML template
+      title: Select Configuration Option  # title to render in the HTML template
+      snippet: diab-skillet-owncloud-demo # this is the name of a skillet to load. CNCBaseFormView will use this to render a form
+
+  - name: loadlabs01
+    class: HostedLabView # this is a view defined in cnc-app-name/views.py which bases CNCBaseFormView
+    menu: Labs
+    menu_option: Load Credential Theft Lab
+    attributes:
+      url: https://loop.paloaltonetworks.com/docs/DOC-40224
+  
+  - name: loadlabs01
+    class: HostedLabView # this is a view defined in cnc-app-name/views.py which bases CNCBaseFormView
+    menu: Labs
+    menu_option: Load GlobalProtect Clientless VPN Lab
+    attributes:
+      url: https://loop.paloaltonetworks.com/docs/DOC-40224
 
   - name: loadHostedDemos
     class: HostedLabView # this is a view defined in cnc-app-name/views.py which bases CNCBaseFormView
@@ -132,4 +152,61 @@ views:
     menu_option: Redlock Landing Page
     attributes:
       url: https://loop.paloaltonetworks.com/community/sales/world-wide-se-team/jit-training/redlock/activity
+
+  - name: loadURLMain
+    class: HostedLabView # this is a view defined in cnc-app-name/views.py which bases CNCBaseFormView
+    menu: Docs and Guides
+    menu_option: Load SE Bootcamp Lab Guide
+    attributes:
+      url: https://loop.paloaltonetworks.com/community/sales/world-wide-se-team/se-new-hire/labs
+
+  - name: loadURLDemos
+    class: HostedLabView # this is a view defined in cnc-app-name/views.py which bases CNCBaseFormView
+    menu: Docs and Guides
+    menu_option: Load Lab Demos Page
+    attributes:
+      url: https://loop.paloaltonetworks.com/community/sales/world-wide-se-team/se-new-hire/labs/lab-in-a-box-demos
+
+  - name: loadURLSolutions
+    class: HostedLabView # this is a view defined in cnc-app-name/views.py which bases CNCBaseFormView
+    menu: Solutions and Help
+    menu_option: Main Solutions Page
+    attributes:
+      url: https://loop.paloaltonetworks.com/community/sales/world-wide-se-team/se-new-hire/labs/liab-known-issues/pages/overview
+      
+  - name: loadURLInstallersNoOptions
+    class: HostedLabView # this is a view defined in cnc-app-name/views.py which bases CNCBaseFormView
+    menu: Main Menu
+    menu_option: Windows Lab in a Box No Install Options in Software Center
+    attributes:
+      url: https://loop.paloaltonetworks.com/docs/DOC-40084
+
+  - name: admintools01
+    class: ProvisionSnippetView # this is a view defined in cnc-app-name/views.py which bases CNCBaseFormView
+    menu: Admin Tools
+    menu_option: Update Demo Data
+    attributes:
+      header: Update Demo Data for Control Panel     # Header to render in the HTML template
+      title: Select Configuration Option  # title to render in the HTML template
+      snippet: update_demo_data  # this is the name of a skillet to load. CNCBaseFormView will use this to render a form
+
+  - name: admintools02
+    class: ProvisionSnippetView # this is a view defined in cnc-app-name/views.py which bases CNCBaseFormView
+    menu: Admin Tools
+    menu_option: Snapshot Lab VM
+    attributes:
+      header: Create a timestamped Snapshot     # Header to render in the HTML template
+      title: Select Configuration Option  # title to render in the HTML template
+      snippet: admin_snapshot  # this is the name of a skillet to load. CNCBaseFormView will use this to render a form
+
+  - name: admintools03
+    class: ProvisionSnippetView # this is a view defined in cnc-app-name/views.py which bases CNCBaseFormView
+    menu: Admin Tools
+    menu_option: Upgrade VM-Series VM50
+    attributes:
+      header: Upgrade pan-panos-vm50     # Header to render in the HTML template
+      title: Select Configuration Option  # title to render in the HTML template
+      snippet: update_vm50  # this is the name of a skillet to load. CNCBaseFormView will use this to render a form
+
+
   

@@ -67,15 +67,17 @@ class ExampleAppView(CNCBaseFormView):
         # and call our super to continue processing
         return super().form_valid(form)
 
+'''
+Troubleshooting Class
 class CNCIDKView(CNCBaseFormView):
 
     snippet = "demo_office365_sharepoint_ww"
-    app_dir = "/Users/packetalien/Development/cnc-control-panel/src/cnc-liab-control-panel/snippets/pandemoinabox/.pan-cnc"
+    app_dir = "Lab_in_a_Box_Control_Panel"
 
 
     def get_snippet(self):
         return self.snippet
-
+'''
 
 # Again override the ProvisionSnippetView as we are only building a workflow here.
 # CNCBaseFormView will only display the form and perform a redirect after 'form_valid'
