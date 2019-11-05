@@ -1,0 +1,13 @@
+oyaml
+PyYAML
+urllib3
+pan-python
+requests
+pyAesCrypt
+passlib
+jinja2
+celery
+django
+GitPython
+jsonpath-ng
+netaddr
